@@ -1,0 +1,65 @@
+package com.taishonet.droid.scala
+
+import java.util
+
+import android.content.Context
+import android.view.{ViewGroup, View}
+import android.widget.BaseAdapter
+
+class ListAAdapter(c: Context, list: util.ArrayList[Message]) extends BaseAdapter {
+
+  override def getCount(): Int = {
+    list.size()
+  }
+
+  override def getItem(i: Int): Object = {
+    list.get(i)
+  }
+
+  override def getItemId(i: Int): Object = {
+    0
+  }
+
+  override def getView(i: Integer, convertView: View,
+                       viewGroup: ViewGroup): View = {
+
+    if (convertView == null) {
+      val view = View.inflate(c, R.layout.list_item_a, null)
+    } else {
+      holder = (ViewHolder) convertView.getTag();
+    }
+
+    GroupParticipant gp = getItem(i);
+    GroupInfo item = gp.groupId;
+    holder.titleView.setText(item.name);
+    holder.subTextView.setText(item.roomId);
+
+    if (item.icon != null && item.icon.url != null) {
+      Picasso.with (mContext).load(item.icon.url).into(holder.iconImageView);
+    } else {
+      holder.iconImageView.setImageResource(R.mipmap.icon_group_blank);
+    }
+
+    //TODO 未読件数と招待中かどうかを取得して反映する
+    if (gp.isInvited()) {
+      holder.inviteView.setVisibility(View.VISIBLE);
+    } else {
+      holder.inviteView.setVisibility(View.GONE);
+    }
+
+    int count = mClient.getUnreadCount(item);
+    if (count > 0) {
+      holder.unreadView.setVisibility(View.VISIBLE);
+      holder.unreadView.setText(count + "");
+    } else {
+      holder.unreadView.setVisibility(View.GONE);
+    }
+
+    //        holder.unreadView.setVisibility(View.VISIBLE);
+    //        holder.unreadView.setText("100+");
+
+    convertView.setTag(holder);
+
+    return convertView;
+  }
+}

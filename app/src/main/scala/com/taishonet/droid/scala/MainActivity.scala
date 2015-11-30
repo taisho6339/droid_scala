@@ -7,5 +7,6 @@ class MainActivity extends AppCompatActivity {
   override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+    startActivity(ListViewActivity.intentOf(this))
   }
 }

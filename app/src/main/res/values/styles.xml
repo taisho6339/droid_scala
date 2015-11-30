@@ -1,11 +1,30 @@
 <resources>
 
+    <!-- チャットグループリストのスタイル-->
+    <style name="ListTextTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ListSubTextTheme" parent="ListTextTheme">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/black_overlay</item>
+    </style>
+
+    <style name="ListTitleTextTheme" parent="ListTextTheme">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/gray_black</item>
     </style>
 
 </resources>
