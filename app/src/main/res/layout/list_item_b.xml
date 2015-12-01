@@ -15,13 +15,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/talk_title"
+            android:id="@+id/title"
             style="@style/ListTitleTextTheme"
             android:layout_margin="5dp"
             android:text="サンプルたいとる"/>
 
         <TextView
-            android:id="@+id/talk_last_message"
+            android:id="@+id/message"
             style="@style/ListSubTextTheme"
             android:layout_margin="5dp"
             android:text="サンプルめっせーじ"/>
@@ -29,7 +29,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/talk_icon"
+        android:id="@+id/icon"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:src="@mipmap/icon_group_blank"/>
